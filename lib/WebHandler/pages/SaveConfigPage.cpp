@@ -86,7 +86,7 @@ void storeConfigValue(const char *name, const char *value)
   paramChars(appcfgWR.mqtt_intopic, A_mqtt_intopic, name, value);
   paramChars(appcfgWR.mqtt_outtopic, A_mqtt_outtopic, name, value);
 
-  paramChars(appcfgWR.mqtt_topic_json, A_mqtt_topic_json, name, value );
+  paramChars(appcfgWR.mqtt_topic_json, A_mqtt_topic_json, name, value);
   paramUnsignedLong(&appcfgWR.mqtt_sending_interval, A_mqtt_sending_interval, name,
                     value);
 
@@ -107,14 +107,14 @@ void storeConfigValue(const char *name, const char *value)
 void handleSaveConfigPage()
 {
   sendAuthentication();
-  sendHeader(APP_NAME " - Save Config", true );
+  sendHeader(APP_NAME " - Save Config", true);
   sendPrint("<form class='pure-form'>");
   sendLegend("Configuration saved.");
 
   int numberOfArguments = server.args();
   sendPrint("<pre>");
 
-  memset( &appcfgWR, 0, sizeof(appcfgWR));
+  memset(&appcfgWR, 0, sizeof(appcfgWR));
 
   for (int i = 0; i < numberOfArguments - 1; i++)
   {

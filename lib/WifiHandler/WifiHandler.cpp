@@ -96,7 +96,7 @@ void WifiHandler::setup()
 
     dnsServer.setErrorReplyCode(DNSReplyCode::NoError);
     dnsServer.start(53, "*", WiFi.softAPIP());
-    LOG0( "DNS server started.\n" );
+    LOG0("DNS server started.\n");
 
     app.wifiLedOn();
     connected = true;
@@ -261,7 +261,7 @@ const char *WifiHandler::getPhyMode()
   return phyModes[WiFi.getPhyMode() - 1];
 }
 
-const char* WifiHandler::getHostname()
+const char *WifiHandler::getHostname()
 {
   return appcfg.ota_hostname;
 }

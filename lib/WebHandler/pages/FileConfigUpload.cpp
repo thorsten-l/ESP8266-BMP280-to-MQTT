@@ -6,7 +6,7 @@
 static File fsUploadFile;
 
 void handleConfigFileUpload()
-{ 
+{
   HTTPUpload &upload = server.upload();
 
   if (upload.status == UPLOAD_FILE_START)
@@ -20,7 +20,7 @@ void handleConfigFileUpload()
     Serial.println(filename);
 
     LittleFS.begin();
-    fsUploadFile = LittleFS.open( APP_CONFIG_FILE_JSON, "w");
+    fsUploadFile = LittleFS.open(APP_CONFIG_FILE_JSON, "w");
     filename = String();
   }
   else if (upload.status == UPLOAD_FILE_WRITE)
@@ -32,7 +32,7 @@ void handleConfigFileUpload()
   {
     if (fsUploadFile)
     {
-      fsUploadFile.close(); 
+      fsUploadFile.close();
       Serial.print("handleFileUpload Size: ");
       Serial.println(upload.totalSize);
     }

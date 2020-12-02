@@ -8,8 +8,8 @@ void handleBackupConfiguration()
   server.sendHeader("Content-Disposition", "attachment; filename=\"config.json\"");
 
   LittleFS.begin();
-  File configFile = LittleFS.open( APP_CONFIG_FILE_JSON, "r" );
-  server.streamFile( configFile, "application/json" );
+  File configFile = LittleFS.open(APP_CONFIG_FILE_JSON, "r");
+  server.streamFile(configFile, "application/json");
   configFile.close();
   LittleFS.end();
 }

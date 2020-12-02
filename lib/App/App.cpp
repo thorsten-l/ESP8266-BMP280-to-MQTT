@@ -184,7 +184,7 @@ void App::setup()
   }
 
   bool timeNotSet = true;
- 
+
   if (appcfg.ntp_enabled && appcfg.wifi_mode == WIFI_STA)
   {
     struct tm timeinfo;
@@ -213,7 +213,7 @@ void App::setup()
   }
   else
   {
-    if ( getenv("TZ") != nullptr )
+    if (getenv("TZ") != nullptr)
     {
       logMessage("Timezone : %s", getenv("TZ"));
     }
@@ -221,9 +221,7 @@ void App::setup()
     {
       logMessage("Timezone not set");
     }
-    
   }
-  
 
   Serial.println();
   otaHandler.setup();

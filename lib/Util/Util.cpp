@@ -8,7 +8,7 @@ char buffer2[256];
 
 #define MAX_MESSAGE_LENGTH 200
 #define MESSAGE_BUFFER_LINES 11
-char messageBuffer[(MAX_MESSAGE_LENGTH+1)*MESSAGE_BUFFER_LINES];
+char messageBuffer[(MAX_MESSAGE_LENGTH + 1) * MESSAGE_BUFFER_LINES];
 int messageStartIndex = 0;
 int messageEndIndex = 0;
 
@@ -87,7 +87,8 @@ void sendHtmlTemplate(const char *htmlTemplate, const char *(*setupProcessor)(co
   {
     switch (state)
     {
-    case 0: {
+    case 0:
+    {
       if (c == '%')
       {
         sendPrint(buffer);
@@ -107,12 +108,13 @@ void sendHtmlTemplate(const char *htmlTemplate, const char *(*setupProcessor)(co
       break;
     }
 
-    case 1: {
+    case 1:
+    {
       if (c == '%')
       {
         const char *val = (*setupProcessor)(buffer);
 
-        if (val != nullptr && strlen( val ) > 0 )
+        if (val != nullptr && strlen(val) > 0)
         {
           sendPrint(val);
         }

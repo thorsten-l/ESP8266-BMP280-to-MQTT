@@ -14,7 +14,7 @@ static const char *setupProcessor(const char *var)
 void handleMaintenancePage()
 {
   sendAuthentication();
-  sendHeader(APP_NAME " - Maintenance", false, MAINTENANCE_STYLE );
-  sendHtmlTemplate( MAINTENANCE_HTML_TEMPLATE, setupProcessor );
+  sendHeader(APP_NAME " - Maintenance", false, MAINTENANCE_STYLE);
+  sendHtmlTemplate(MAINTENANCE_HTML_TEMPLATE, setupProcessor);
   sendFooter();
 }

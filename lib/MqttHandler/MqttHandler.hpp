@@ -11,9 +11,9 @@ private:
 
 public:
   MqttHandler();
-  void handle( unsigned long now );
-  void sendValue( const char* outopic, const char* value );
-  void sendCommand( unsigned long address, unsigned long unit, const bool value);
+  void handle(unsigned long now);
+  void sendValue(const char *outopic, const char *value);
+  void sendCommand(unsigned long address, unsigned long unit, const bool value);
 };
 
 extern MqttHandler mqttHandler;

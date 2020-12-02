@@ -7,10 +7,10 @@ extern bool firmwareUploadFailed;
 void handleFirmwareUploadSuccess()
 {
   sendAuthentication();
-  sendHeader(APP_NAME " - Firmware upload", true );
+  sendHeader(APP_NAME " - Firmware upload", true);
   sendPrint("<form class='pure-form'>");
 
-  if(firmwareUploadFailed)
+  if (firmwareUploadFailed)
   {
     sendLegend("Firmware upload FAILED!");
     sendFooter();

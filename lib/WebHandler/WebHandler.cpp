@@ -216,7 +216,7 @@ void WebHandler::setup()
     server.sendHeader("Access-Control-Allow-Origin", "*");
     sendHeaderNoCache();
     readSensor();
-    server.send(200, "application/json", buffer );
+    server.send(200, "application/json", buffer);
   });
 
   server.on("/last10", []() {
@@ -231,11 +231,11 @@ void WebHandler::setup()
     while (msi != messageEndIndex)
     {
       char *mb = messageBuffer + (msi * (MAX_MESSAGE_LENGTH + 1));
-      if ( firstMessage == false )
+      if (firstMessage == false)
       {
         sendPrint(",");
       }
-      else 
+      else
       {
         firstMessage = false;
       }

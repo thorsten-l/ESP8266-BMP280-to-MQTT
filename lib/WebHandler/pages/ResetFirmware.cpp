@@ -9,7 +9,7 @@ void handleResetFirmware()
   sendPrint("<form class='pure-form'>");
   sendLegend("Reset Firmware.");
 
-  if (strcmp( "true", server.arg(0).c_str()) == 0)
+  if (strcmp("true", server.arg(0).c_str()) == 0)
   {
     sendPrint("<h4>Resetting firmware... restart takes about 30sec.</h4>");
     app.firmwareReset();

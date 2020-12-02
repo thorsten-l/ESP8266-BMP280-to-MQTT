@@ -65,7 +65,8 @@ bool uJson::findChar(const int c)
 int uJson::nextNotWhiteSpaceChar()
 {
   int r;
-  while ((r = file.read()) >= 0 && (r == ' ' || r == '\r' || r == '\n' || r == '\t' || r == ',' ));
+  while ((r = file.read()) >= 0 && (r == ' ' || r == '\r' || r == '\n' || r == '\t' || r == ','))
+    ;
   return r;
 }
 
@@ -78,14 +79,14 @@ bool uJson::readEntryBoolean(const char *n1, const char *n2, bool *value)
     char nbuffer[16];
     int i = 0;
     int r = nextNotWhiteSpaceChar();
-  
-    while( r > 0 && i < 16 && r != ' ' && r != '\t' && r != '\r' && r != '\n' && r != ',' )
+
+    while (r > 0 && i < 16 && r != ' ' && r != '\t' && r != '\r' && r != '\n' && r != ',')
     {
       nbuffer[i++] = r;
       r = file.read();
     }
-  
-    if ( r > 0 && i < 16 )
+
+    if (r > 0 && i < 16)
     {
       nbuffer[i] = 0;
 
@@ -116,17 +117,17 @@ bool uJson::readEntryInteger(const char *n1, const char *n2, int *value)
     char nbuffer[32];
     int i = 0;
     int r = nextNotWhiteSpaceChar();
-  
-    while( r > 0 && i < 32 && r != ' ' && r != '\t' && r != '\r' && r != '\n' && r != ',' )
+
+    while (r > 0 && i < 32 && r != ' ' && r != '\t' && r != '\r' && r != '\n' && r != ',')
     {
       nbuffer[i++] = r;
       r = file.read();
     }
-  
-    if ( r > 0 && i < 32 )
+
+    if (r > 0 && i < 32)
     {
       nbuffer[i] = 0;
-      if ( sscanf( nbuffer, "%d", value ) == 1 )
+      if (sscanf(nbuffer, "%d", value) == 1)
       {
         return false;
       }
@@ -136,7 +137,7 @@ bool uJson::readEntryInteger(const char *n1, const char *n2, int *value)
   {
     return false;
   }
- 
+
   return true;
 }
 
@@ -148,17 +149,17 @@ bool uJson::readEntryULong(const char *n1, const char *n2,
     char nbuffer[32];
     int i = 0;
     int r = nextNotWhiteSpaceChar();
-  
-    while( r > 0 && i < 32 && r != ' ' && r != '\t' && r != '\r' && r != '\n' && r != ',' )
+
+    while (r > 0 && i < 32 && r != ' ' && r != '\t' && r != '\r' && r != '\n' && r != ',')
     {
       nbuffer[i++] = r;
       r = file.read();
     }
-  
-    if ( r > 0 && i < 32 )
+
+    if (r > 0 && i < 32)
     {
       nbuffer[i] = 0;
-      if ( sscanf( nbuffer, "%lu", value ) == 1 )
+      if (sscanf(nbuffer, "%lu", value) == 1)
       {
         return false;
       }

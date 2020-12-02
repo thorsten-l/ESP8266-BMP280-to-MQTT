@@ -18,7 +18,7 @@ void handleFirmwareUpload()
     Serial.setDebugOutput(true);
     WiFiUDP::stopAll();
     Serial.printf("Update: %s\n", upload.filename.c_str());
-    TLOG1( "Update: %s\n", upload.filename.c_str() );
+    TLOG1("Update: %s\n", upload.filename.c_str());
 
     uint32_t maxSketchSpace = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
 
@@ -32,9 +32,9 @@ void handleFirmwareUpload()
   else if (upload.status == UPLOAD_FILE_WRITE)
   {
     size_t p = upload.totalSize * 100 / upload.contentLength;
-    Serial.printf("\rupload progress = %u%%", p );
+    Serial.printf("\rupload progress = %u%%", p);
     Serial.flush();
-    TelnetStream.printf( "\rupload progress = %u%%", p );
+    TelnetStream.printf("\rupload progress = %u%%", p);
     TelnetStream.flush();
 
     if (Update.write(upload.buf, upload.currentSize) != upload.currentSize)
@@ -45,24 +45,24 @@ void handleFirmwareUpload()
   else if (upload.status == UPLOAD_FILE_END)
   {
     if (Update.end(true))
-    { 
-      if( upload.totalSize > 0 )
+    {
+      if (upload.totalSize > 0)
       {
         firmwareUploadFailed = false;
-        Serial.printf("\n\nUpdate Success: %u\nRebooting...\n\n", upload.totalSize );
+        Serial.printf("\n\nUpdate Success: %u\nRebooting...\n\n", upload.totalSize);
         TelnetStream.println("\n");
-        TLOG1("Update Success: %u\nRebooting...\n\n", upload.totalSize );
+        TLOG1("Update Success: %u\nRebooting...\n\n", upload.totalSize);
       }
       else
       {
-        Serial.println( "Firmware file size s zero.");
-        TLOG0( "Firmware file size s zero.");
+        Serial.println("Firmware file size s zero.");
+        TLOG0("Firmware file size s zero.");
       }
     }
     else
     {
       Update.printError(Serial);
-      TLOG0( "Firmware upload error.");
+      TLOG0("Firmware upload error.");
     }
     Serial.setDebugOutput(false);
   }

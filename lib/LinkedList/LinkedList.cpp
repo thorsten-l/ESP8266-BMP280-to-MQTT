@@ -2,20 +2,19 @@
 #include <App.hpp>
 #include "LinkedList.hpp"
 
-void SimpleLinkedList::put( String value )
+void SimpleLinkedList::put(String value)
 {
-  if ( rootNode == NULL )
+  if (rootNode == NULL)
   {
     rootNode = new ListNode();
     rootNode->value = new String(value);
   }
   else
   {
-    ListNode* currentListNode = NULL;
-
+    ListNode *currentListNode = NULL;
     do
     {
-      if ( currentListNode == NULL ) 
+      if (currentListNode == NULL)
       {
         currentListNode = rootNode;
       }
@@ -24,10 +23,9 @@ void SimpleLinkedList::put( String value )
         currentListNode = currentListNode->next;
       }
 
-      if ( *currentListNode->value == value )
+      if (*currentListNode->value == value)
         return; // make list unique
-    }
-    while(currentListNode->next != NULL );
+    } while (currentListNode->next != NULL);
     currentListNode->next = new ListNode();
     currentListNode->next->value = new String(value);
   }

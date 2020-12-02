@@ -80,7 +80,7 @@ void loop()
 
     if (appcfg.mqtt_sending_interval > 0 && ((millis() - lastMqttMessageTimestamp >= (appcfg.mqtt_sending_interval * 1000))))
     {
-      static char logbuffer[MAX_MESSAGE_LENGTH+1];
+      static char logbuffer[MAX_MESSAGE_LENGTH + 1];
       readSensor();
 
       if (appcfg.mqtt_enabled == true)

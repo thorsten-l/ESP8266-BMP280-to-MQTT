@@ -3,20 +3,20 @@
 
 #include <Arduino.h>
 
-#define LOG0( format ) Serial.printf( "(%ld) " format, millis())
-#define LOG1( format, ... ) Serial.printf( "(%lu) " format, millis(), ##__VA_ARGS__ )
-#define TLOG0( format ) TelnetStream.printf( "(%ld) " format, millis())
-#define TLOG1( format, ... ) TelnetStream.printf( "(%ld) " format, millis(), ##__VA_ARGS__ )
+#define LOG0(format) Serial.printf("(%ld) " format, millis())
+#define LOG1(format, ...) Serial.printf("(%lu) " format, millis(), ##__VA_ARGS__)
+#define TLOG0(format) TelnetStream.printf("(%ld) " format, millis())
+#define TLOG1(format, ...) TelnetStream.printf("(%ld) " format, millis(), ##__VA_ARGS__)
 
 #define APP_NAME "BME280 to MQTT"
 #define APP_VERSION "1.1.2"
 #define APP_AUTHOR "Dr. Thorsten Ludewig <t.ludewig@gmail.com>"
 #define APP_CONFIG_FILE_JSON "/config.json"
 
-#define WIFI_LED_ON   0
-#define WIFI_LED_OFF  1
+#define WIFI_LED_ON 0
+#define WIFI_LED_OFF 1
 
-extern void appShowHeader(Stream& out);
+extern void appShowHeader(Stream &out);
 extern const char *appUptime();
 extern const char *appDateTime();
 extern void logMessage(const char *message);
@@ -30,7 +30,7 @@ typedef struct appconfig
 {
   char wifi_ssid[64];
   char wifi_password[64];
-  int  wifi_mode;
+  int wifi_mode;
 
   int net_mode;
   char net_host[64];
@@ -46,7 +46,7 @@ typedef struct appconfig
   bool mqtt_enabled;
   char mqtt_clientid[64];
   char mqtt_host[64];
-  int  mqtt_port;
+  int mqtt_port;
   bool mqtt_useauth;
   char mqtt_user[64];
   char mqtt_password[64];
@@ -54,7 +54,7 @@ typedef struct appconfig
   char mqtt_outtopic[64];
   char mqtt_topic_json[64];
   unsigned long mqtt_sending_interval;
-  
+
   bool telnet_enabled;
   bool ota_enabled;
 
@@ -93,7 +93,7 @@ public:
   void defaultConfig();
   void loadConfig();
   void writeConfig();
-  bool loadJsonConfig( const char *filename );
+  bool loadJsonConfig(const char *filename);
   void printConfig(AppConfig ac);
   void delayedSystemRestart();
   void loop();

@@ -5,8 +5,8 @@
 
 struct ListNode
 {
-  String* value;
-  ListNode* next = NULL;
+  String *value;
+  ListNode *next = NULL;
 };
 
 class SimpleLinkedList
@@ -16,8 +16,8 @@ private:
   ListNode *rootNode = NULL;
 
 public:
-  void put( String value );
-  ListNode* getRootNode();
+  void put(String value);
+  ListNode *getRootNode();
 };
 
 #endif

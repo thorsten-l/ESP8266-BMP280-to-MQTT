@@ -14,7 +14,7 @@ MqttHandler::MqttHandler() { initialized = false; }
 
 bool MqttHandler::reconnect()
 {
-  if (( appcfg.mqtt_useauth &&
+  if ((appcfg.mqtt_useauth &&
        client.connect(appcfg.mqtt_clientid, appcfg.mqtt_user,
                       appcfg.mqtt_password)) ||
       (!appcfg.mqtt_useauth && client.connect(appcfg.mqtt_clientid)))
@@ -65,27 +65,27 @@ void MqttHandler::sendValue(const char *outtopic, const char *value)
   if (appcfg.mqtt_enabled && client.connected())
   {
     client.publish(outtopic, value);
-    LOG1( "MQTT publish outtopic=%s value=%s\n", outtopic, value );
+    LOG1("MQTT publish outtopic=%s value=%s\n", outtopic, value);
   }
 }
 
 static char topicBuffer[255];
 
-void MqttHandler::sendCommand( unsigned long address, unsigned long unit, const bool value)
+void MqttHandler::sendCommand(unsigned long address, unsigned long unit, const bool value)
 {
   if (appcfg.mqtt_enabled && client.connected())
   {
-    sprintf( topicBuffer, appcfg.mqtt_outtopic, address, unit );    
+    sprintf(topicBuffer, appcfg.mqtt_outtopic, address, unit);
 
-    if ( value )
+    if (value)
     {
-      client.publish(topicBuffer, "ON" );
-      LOG1( "MQTT publish outtopic=%s value=%s\n", topicBuffer, "ON" );
+      client.publish(topicBuffer, "ON");
+      LOG1("MQTT publish outtopic=%s value=%s\n", topicBuffer, "ON");
     }
     else
     {
-      client.publish(topicBuffer, "OFF" );
-      LOG1( "MQTT publish outtopic=%s value=%s\n", topicBuffer, "OFF" );
+      client.publish(topicBuffer, "OFF");
+      LOG1("MQTT publish outtopic=%s value=%s\n", topicBuffer, "OFF");
     }
   }
 }

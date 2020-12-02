@@ -11,26 +11,26 @@ private:
   bool firstEntry;
   char buffer[128];
 
-  bool findChar( const int c );
+  bool findChar(const int c);
   int nextNotWhiteSpaceChar();
-  void writeAttributeName( String entryName );
+  void writeAttributeName(String entryName);
 
 public:
-  uJson( File _file );
+  uJson(File _file);
 
   void writeHeader();
-  void writeEntry( String entryName, bool value );
-  void writeEntry( String entryName, int value );
-  void writeEntry( String entryName, unsigned long value );
-  void writeEntry( String entryName, const char *value );
+  void writeEntry(String entryName, bool value);
+  void writeEntry(String entryName, int value);
+  void writeEntry(String entryName, unsigned long value);
+  void writeEntry(String entryName, const char *value);
   void writeFooter();
 
   bool readHeader();
-  bool readAttributeName( char *attributeName );
-  bool readEntryBoolean( const char* n1, const char* n2, bool *value );
-  bool readEntryInteger( const char* n1, const char* n2, int *value );
-  bool readEntryULong( const char* n1, const char* n2, unsigned long *value );
-  bool readEntryChars( const char* n1, const char* n2, char *value );
+  bool readAttributeName(char *attributeName);
+  bool readEntryBoolean(const char *n1, const char *n2, bool *value);
+  bool readEntryInteger(const char *n1, const char *n2, int *value);
+  bool readEntryULong(const char *n1, const char *n2, unsigned long *value);
+  bool readEntryChars(const char *n1, const char *n2, char *value);
   bool readFooter();
 };
 

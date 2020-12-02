@@ -25,7 +25,8 @@ repository https://github.com/jandrassy
 #include <WiFi.h>
 #endif
 
-class TelnetStreamClass : public Stream {
+class TelnetStreamClass : public Stream
+{
 
 private:
   WiFiServer server;
@@ -38,7 +39,6 @@ private:
   void printBanner();
 
 public:
-
   TelnetStreamClass(uint16_t port);
 
   void begin();
@@ -54,7 +54,6 @@ public:
   size_t write(uint8_t val);
   using Print::write; // pull in write(str) and write(buf, size) from Print
   void flush();
-
 };
 
 extern TelnetStreamClass TelnetStream;

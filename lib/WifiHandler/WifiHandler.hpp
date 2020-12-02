@@ -9,7 +9,7 @@ private:
   bool connected;
   int connectCounter = 0;
   char networkBuffer[1024];
-  const char* scanNetworks();
+  const char *scanNetworks();
   byte mac[6];
   char macAddress[20];
 
@@ -18,13 +18,13 @@ public:
   const bool isReady();
   const bool isConnected();
   const bool isInStationMode();
-  ListNode* getScannedNetworks();
+  ListNode *getScannedNetworks();
   const bool handle();
   const char *getLocalIP();
   int getConnectCounter();
-  const char* getMacAddress();
-  const char* getPhyMode();
-  const char* getHostname();
+  const char *getMacAddress();
+  const char *getPhyMode();
+  const char *getHostname();
 };
 
 extern WifiHandler wifiHandler;

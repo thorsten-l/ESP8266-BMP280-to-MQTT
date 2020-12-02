@@ -11,7 +11,6 @@ const char *blank = "";
 
 static const char *setupProcessor(const char *var)
 {
-
   if (strcmp(var, A_admin_password) == 0)
     return appcfg.admin_password;
 
@@ -27,7 +26,7 @@ static const char *setupProcessor(const char *var)
     ListNode *node = wifiHandler.getScannedNetworks();
     String options = "";
 
-    if ( node == NULL)
+    if (node == NULL)
     {
       LOG0("node==NULL\n");
     }
@@ -40,7 +39,7 @@ static const char *setupProcessor(const char *var)
       node = node->next;
     }
 
-    fillBuffer( options.c_str());
+    fillBuffer(options.c_str());
     return buffer;
   }
 
@@ -138,6 +137,6 @@ void handleSetupPage()
 {
   sendAuthentication();
   sendHeader(APP_NAME " - Setup");
-  sendHtmlTemplate( SETUP_HTML_TEMPLATE, setupProcessor );
+  sendHtmlTemplate(SETUP_HTML_TEMPLATE, setupProcessor);
   sendFooter();
 }
