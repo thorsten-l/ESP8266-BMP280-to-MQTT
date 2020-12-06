@@ -9,30 +9,30 @@
 #include <MqttHandler.hpp>
 #include <TelnetStream.h>
 
-#include <Adafruit_BME280.h>
+#include <Adafruit_BMP280.h>
 #include <Adafruit_Sensor.h>
 
 ADC_MODE(ADC_VCC);
 
 #define SEALEVELPRESSURE_HPA (1013.25)
-Adafruit_BME280 bme;
+Adafruit_BMP280 bmp;
 float temperature_C;
 float pressure_hPa;
-float humidity;
+float altitude;
 
 void readSensor()
 {
-  temperature_C = bme.readTemperature();
-  pressure_hPa = bme.readPressure() / 100.0f;
-  humidity = bme.readHumidity();
+  temperature_C = bmp.readTemperature();
+  pressure_hPa = bmp.readPressure() / 100.0f;
+  altitude = bmp.readAltitude();
 
   sprintf(buffer,
           "{"
           "\"temperature_C\":%.2f,"
           "\"pressure_hPa\":%.3f,"
-          "\"humidity\":%.3f"
+          "\"altitude\":%.3f"
           "}",
-          temperature_C, pressure_hPa, humidity);
+          temperature_C, pressure_hPa, altitude);
 }
 
 void setup()
@@ -59,10 +59,10 @@ void setup()
   logMessage("Found %d device(s).", count);
   logMessage("I2C sensor address setting : %d (0x%02X)",
              appcfg.i2c_sensor_address, appcfg.i2c_sensor_address);
-  status = bme.begin(appcfg.i2c_sensor_address);
+  status = bmp.begin(appcfg.i2c_sensor_address);
   if (!status)
   {
-    logMessage("Could not find a valid BME280 sensor, check wiring, "
+    logMessage("Could not find a valid BMP280 sensor, check wiring, "
                "address, sensor ID!");
   }
 
@@ -92,8 +92,8 @@ void loop()
       sprintf(logbuffer,
               "temperature_C:%.2f, "
               "pressure_hPa:%.3f, "
-              "humidity:%.3f",
-              temperature_C, pressure_hPa, humidity);
+              "altitude:%.3f",
+              temperature_C, pressure_hPa, altitude);
 
       logMessage(logbuffer);
     }

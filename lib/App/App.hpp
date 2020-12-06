@@ -8,8 +8,8 @@
 #define TLOG0(format) TelnetStream.printf("(%ld) " format, millis())
 #define TLOG1(format, ...) TelnetStream.printf("(%ld) " format, millis(), ##__VA_ARGS__)
 
-#define APP_NAME "BME280 to MQTT"
-#define APP_VERSION "1.1.2"
+#define APP_NAME "BMP280 to MQTT"
+#define APP_VERSION "1.1.3"
 #define APP_AUTHOR "Dr. Thorsten Ludewig <t.ludewig@gmail.com>"
 #define APP_CONFIG_FILE_JSON "/config.json"
 

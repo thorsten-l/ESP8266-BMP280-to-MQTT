@@ -13,7 +13,7 @@ const char LAST10_SCRIPT[] PROGMEM =
 
     "var t = document.getElementById(\"sgid0\");\n"
     "var p = document.getElementById(\"sgid1\");\n"
-    "var h = document.getElementById(\"sgid2\");\n"
+    "var a = document.getElementById(\"sgid2\");\n"
 
     "fetch(\"/last10\").then((resp) => resp.json()).then(function(data){\n"
     "var text=\"\";\n"
@@ -26,7 +26,7 @@ const char LAST10_SCRIPT[] PROGMEM =
 
     "fetch('/sensor').then(resp => resp.json()).then(function (o) {\n"
     "t.value = o.temperature_C.toFixed(1) + '°C',\n"
-    "h.value = o.humidity.toFixed(1) + '%',\n"
+    "a.value = o.altitude.toFixed(1) + 'm',\n"
     "p.value = o.pressure_hPa.toFixed(1) + 'hPa' });\n"
 
     "}\n"
@@ -46,7 +46,7 @@ const char SENSOR_HTML[] PROGMEM =
     "</div>\n"
 
     "<div class='pure-control-group'>\n"
-    "<label for='sgid2'>Humidity</label>\n"
+    "<label for='sgid2'>Altitude</label>\n"
     "<input id='sgid2' type='text' maxlength='64' readonly>\n"
     "</div>\n";
 
